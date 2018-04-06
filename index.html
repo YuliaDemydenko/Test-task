@@ -3,129 +3,19 @@
  <head>
   <meta charset="utf-8">
   <title>Test task</title>
-  <style>
-   #tabl { 
-	margin-top: 5%;
-	margin-left: 40%;
-    background: white; /* Цвет фона таблицы */
-    border-spacing: 3px; /* Расстояние между ячейками */
-	border: 2px solid #66ccff;
-   }
-   
-   td  {
-    background: #66ccff; /* Цвет фона ячеек */
-	width: 80px;
-	height: 80px;
-   }
-   
-   td:hover {
-    background: red;
-}
-
-   #plus, #plus1  {
-    background: #ff9933; /* Цвет фона ячеек */
-	width: 80px;
-	height: 80px;
-	transition: all 2s ease;
-	display=none;
-   }
-	
-     #min, #min1  {
-    background: #990000; /* Цвет фона ячеек */
-	width: 80px;
-	height: 80px;
-	transition: all 2s ease; 
-	display=none;
-   }
-   
-   #plus:hover { 
-   cursor: pointer; 
-   transition: all 2s ease;
-   opacity: 0.6
-   }
-   
-	#min:hover { 
-	cursor: pointer;
-	transition: all 2s ease;   
-	opacity: 0.6
-   } 
-  </style>
+  <link href="css/style.css" rel="stylesheet">
  </head> 
- <body> 
- 	<script>
- 
-
-function add2(tableID) {
-
-var tbl = document.getElementById (tableID);
-var trArr = tbl.getElementsByTagName('tr');
-	
-    for (var i = 0, l = trArr.length; i < l; i++)
-        trArr[i].insertCell(0);
-}
-
- function del(){
-var description = document.getElementById('tabl').getElementsByTagName('tr')[0];
-description.remove();
-}
-
- function deleteRightCol(tableID) 
-   { 
-    var table=document.getElementById(tableID); 
-    var i,j,n=table.rows.length,m=table.rows[0].cells.length; 
-    for (i=0;i<n;i++) 
-    { 
-     table.rows[i].cells[m-2].innerHTML=table.rows[i].cells[m-1].innerHTML; 
-     table.rows[i].deleteCell(m-1); 
-   } 
-   }	
-function addRow(tableID){
-  
-var tbl = document.getElementById (tableID);
-var rws = tbl.rows;
-var lst = rws [rws.length - 1];
-var cls = lst.cells.length;
-var ro = tbl.insertRow (-1);
-
-for (var j = 0; j < cls; j++) 
-{                                 // цикл из cls шагов (по количеству ячеек)  
-   var ce = ro.insertCell (-1);
-   
-//   document.getElementById('tabl').getElementsByTagName('tr')[0].innerHTML += '<input id="min" type="button" value="-" onClick="del();">'	
-  
-}
-  var a = document.getElementById('tabl');
-
-  a.onmouseout = function(e) {
-    document.getElementById('plus').style.display='none';
-	document.getElementById('plus1').style.display='none';
-	document.getElementById('min').style.display='none';
-	document.getElementById('min1').style.display='none';
-  }
-
-  a.onmouseover = function(e) {
-   document.getElementById('plus').style.display='block';
-   document.getElementById('plus1').style.display='block';
-   document.getElementById('min').style.display='block';
-   document.getElementById('min1').style.display='block';
-   };
-}   
-
-//дожидаемся полной загрузки страницы
-window.onload = function () {
-  
-}
-</script>
-  
-  
-				  
+ <body> 			  
   <table id='tabl'>
 	<tr><td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tbody>
+	<input id='plus' type='button' value='+' onClick="add2 ('tabl')">
+	<input id='plus1' type='button' value='+' onClick="addRow ('tabl')">   
+	<input id='min' type='button' value='-' onClick='deleteRow(this)'> 
+	<input id='min1' type='button' value='-' onClick="deleteCol('tabl')"> 
+</tbody>
   </table>
- <input id='plus' type='button' value='+' onClick="add2 ('tabl')">
- <input id='plus1' type='button' value='+' onClick="addRow ('tabl')">   
-<input id='min' type='button' value='-' onClick='del();'> 
- <input id='min1' type='button' value='-' onClick="deleteRightCol('tabl')"> 
  
+ <script src="js/index.js"></script>
  </body>
 </html>
