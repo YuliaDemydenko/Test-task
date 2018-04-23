@@ -1,3 +1,13 @@
+var tableState = [
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
+];
+window.onload = function () {
+    createTable(tableState, 'tabl');
+};
+
 function add2(tableID)
 { 
     var table=document.getElementById(tableID); 
