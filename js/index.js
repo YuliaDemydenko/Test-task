@@ -8,6 +8,9 @@ window.onload = function () {
     createTable(tableState, 'tabl');
 };
 
+function createTable(tableState, id) {
+}
+
 function add2(tableID)
 { 
     var table=document.getElementById(tableID); 
